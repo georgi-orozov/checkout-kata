@@ -1,3 +1,4 @@
+using checkout_kata.Exceptions;
 using checkout_kata.Interfaces;
 
 namespace checkout_kata.PricingStrategies;
@@ -13,6 +14,8 @@ public class BasePricingStrategy : IPricingStrategy
 
     public int CalculatePrice(int itemQuantity)
     {
+        if (_singlePrice == 0) throw new CustomException("Price cannot be 0");
+        
         return itemQuantity * _singlePrice;
     }
 }
