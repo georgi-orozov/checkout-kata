@@ -1,12 +1,13 @@
+using checkout_kata.Exceptions;
 using checkout_kata.Interfaces;
 
 namespace checkout_kata.PricingStrategies;
 
 public class QuantityPricingStrategy : IPricingStrategy
 {
-    private int _singlePrice;
-    private int _promoQuantity;
-    private int _promoPrice;
+    private readonly int _singlePrice;
+    private readonly int _promoQuantity;
+    private readonly int _promoPrice;
 
     public QuantityPricingStrategy(int singlePrice, int promoQuantity, int promoPrice)
     {
@@ -17,6 +18,11 @@ public class QuantityPricingStrategy : IPricingStrategy
 
     public int CalculatePrice(int itemQuantity)
     {
-        throw new NotImplementedException();
+        if (_singlePrice == 0) throw new CustomException("Price cannot be 0");
+        
+        var bundles = itemQuantity / _promoQuantity;
+        var remainder = itemQuantity % _promoQuantity;
+        
+        return (bundles * _promoPrice) + (remainder * _singlePrice);
     }
 }
