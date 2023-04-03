@@ -1,4 +1,4 @@
-namespace checkout_kata;
+namespace checkout_kata.Interfaces;
 
 public interface ICheckout
 {
