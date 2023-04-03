@@ -5,7 +5,7 @@ namespace checkout_kata.Checkout;
 
 public class Checkout : ICheckout
 {
-    private Dictionary<string, IPricingStrategy> _pricingStrategies;
+    private readonly Dictionary<string, IPricingStrategy> _pricingStrategies;
     private readonly Dictionary<string, int> _scannedItems = new();
 
     public Checkout(Dictionary<string, IPricingStrategy> pricingStrategies)
@@ -29,6 +29,13 @@ public class Checkout : ICheckout
 
     public int GetTotalPrice()
     {
-        throw new NotImplementedException();
+        if (_scannedItems.Count == 0) throw new CustomException("No items scanned");
+        
+        return (
+            from item in _scannedItems 
+            let strategy = _pricingStrategies[item.Key] 
+            let itemCount = item.Value 
+            select strategy.CalculatePrice(itemCount)
+            ).Sum();
     }
 }

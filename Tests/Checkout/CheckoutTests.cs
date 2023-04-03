@@ -9,7 +9,6 @@ namespace Tests.Checkout;
 
 public class CheckoutTests
 {
-
     [Theory]
     [InlineData(new[] { "A" }, 50)]
     [InlineData(new[] { "B" }, 30)]
@@ -31,7 +30,7 @@ public class CheckoutTests
     }
     
     [Theory]
-    [InlineData(new[] { "B", "A", "B", "C", "A", "A", "D" }, 225)]
+    [InlineData(new[] { "B", "A", "B", "C", "A", "A", "D" }, 210)]
     [InlineData(new[] { "A", "A", "A", "A", "A" }, 230)]
     [InlineData(new[] { "B", "B", "B" }, 75)]
     [InlineData(new[] { "A", "B", "D" }, 95)]
