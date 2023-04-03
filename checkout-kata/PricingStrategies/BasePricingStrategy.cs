@@ -4,7 +4,7 @@ namespace checkout_kata.PricingStrategies;
 
 public class BasePricingStrategy : IPricingStrategy
 {
-    private int _singlePrice;
+    private readonly int _singlePrice;
 
     public BasePricingStrategy(int singlePrice)
     {
@@ -13,6 +13,6 @@ public class BasePricingStrategy : IPricingStrategy
 
     public int CalculatePrice(int itemQuantity)
     {
-        throw new NotImplementedException();
+        return itemQuantity * _singlePrice;
     }
 }
