@@ -73,7 +73,7 @@ public class CheckoutTests
         Action act = () => checkout.Scan("AB");
 
         // Assert
-        var exception = Assert.Throws<CustomException>(act);
+        var exception = Assert.Throws<MultipleItemsScannedException>(act);
         Assert.Equal("Only 1 item at a time", exception.Message);
     }
     

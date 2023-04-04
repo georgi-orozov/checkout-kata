@@ -15,7 +15,7 @@ public class Checkout : ICheckout
 
     public void Scan(string item)
     {
-        if (item.Length != 1) throw new CustomException("Only 1 item at a time");
+        if (item.Length != 1) throw new MultipleItemsScannedException("Only 1 item at a time");
         
         if (_scannedItems.ContainsKey(item))
         {
