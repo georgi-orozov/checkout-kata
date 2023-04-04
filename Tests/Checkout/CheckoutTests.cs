@@ -59,7 +59,7 @@ public class CheckoutTests
         Action act = () => checkout.GetTotalPrice();
 
         // Assert
-        var exception = Assert.Throws<CustomException>(act);
+        var exception = Assert.Throws<NoScannedItemsException>(act);
         Assert.Equal("No items scanned", exception.Message);
     }
     
