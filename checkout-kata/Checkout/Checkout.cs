@@ -29,7 +29,7 @@ public class Checkout : ICheckout
 
     public int GetTotalPrice()
     {
-        if (_scannedItems.Count == 0) throw new CustomException("No items scanned");
+        if (_scannedItems.Count == 0) throw new NoScannedItemsException("No items scanned");
         
         return (
             from item in _scannedItems 
