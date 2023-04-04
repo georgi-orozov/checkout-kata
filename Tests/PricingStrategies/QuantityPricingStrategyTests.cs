@@ -36,7 +36,7 @@ public class QuantityPricingStrategyTests
         Action act = () => quantityStrategy.CalculatePrice(It.IsAny<int>());
         
         // Assert
-        var exception = Assert.Throws<CustomException>(act);
+        var exception = Assert.Throws<NoPriceException>(act);
         Assert.Equal("Price cannot be 0", exception.Message);
     }
 }

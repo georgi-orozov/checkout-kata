@@ -34,7 +34,7 @@ public class BasePricingStrategyTests
         Action act = () => baseStrategy.CalculatePrice(It.IsAny<int>());
         
         // Assert
-        var exception = Assert.Throws<CustomException>(act);
+        var exception = Assert.Throws<NoPriceException>(act);
         Assert.Equal("Price cannot be 0", exception.Message);
     }
 }

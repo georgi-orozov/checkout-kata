@@ -18,7 +18,7 @@ public class QuantityPricingStrategy : IPricingStrategy
 
     public int CalculatePrice(int itemQuantity)
     {
-        if (_singlePrice == 0) throw new CustomException("Price cannot be 0");
+        if (_singlePrice == 0) throw new NoPriceException("Price cannot be 0");
         
         var bundles = itemQuantity / _promoQuantity;
         var remainder = itemQuantity % _promoQuantity;
